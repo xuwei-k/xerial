@@ -35,9 +35,9 @@ object JavassistUtil {
 
   class MethodFactory[Key, Interface](implicit tag: ClassTag[Interface]) extends Logger {
 
-    import collection.JavaConversions._
+    import collection.JavaConverters._
 
-    private val codeTable = new java.util.concurrent.ConcurrentHashMap[Key, Interface]()
+    private val codeTable = (new java.util.concurrent.ConcurrentHashMap[Key, Interface]()).asScala
 
     private val interfaceCls = tag.runtimeClass
 

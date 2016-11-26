@@ -22,7 +22,7 @@ import sys.process.{ProcessLogger, Process}
 import xerial.core.log.Logger
 import xerial.core.util
 import java.lang.reflect.Field
-import collection.JavaConversions._
+import collection.JavaConverters._
 import io.Source
 import management.ManagementFactory
 import java.util.regex.Pattern
@@ -189,7 +189,7 @@ object Shell extends Logger {
   def launchProcess(cmdLine: String) = {
     val pb = prepareProcessBuilder(cmdLine, inheritIO=true)
     val p = pb.start
-    debug(s"exec command [pid:${getProcessID(p)}] ${pb.command.mkString(" ")}")
+    debug(s"exec command [pid:${getProcessID(p)}] ${pb.command.asScala.mkString(" ")}")
     p
   }
 
@@ -227,8 +227,7 @@ object Shell extends Logger {
   }
 
   def getEnv : Map[String, String] = {
-    import collection.JavaConversions._
-    System.getenv().toMap
+    scala.sys.env
   }
 
   def launchCmdExe(cmdLine: String) = {

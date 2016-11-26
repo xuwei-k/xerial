@@ -2,7 +2,6 @@ package xerial.core.io
 
 import text.LineReader
 import xerial.core.XerialSpec
-import collection.JavaConversions._
 
 //--------------------------------------
 //

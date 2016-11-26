@@ -272,8 +272,8 @@ class LineReader(buffer: TextBuffer,
           bufferLimit = lenToPreserve
           current.cursor -= mark.cursor
           val slideLen = mark.cursor
-          import collection.JavaConversions._
-          for (each <- markQueue)
+          import collection.JavaConverters._
+          for (each <- markQueue.asScala)
             each.cursor -= slideLen
         }
         else {
