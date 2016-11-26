@@ -1,9 +1,5 @@
 language: scala
 
-branches:
-  only:
-    - develop
-
 sudo: false
 
 jdk:
